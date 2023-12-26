@@ -1,6 +1,16 @@
+ul {
+  list-style-type: circle;
+  padding-inline-start: 0;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-top: 50px;
+}
+
+.deleteBtn {
+  padding: 2px 5px;
+  margin: 5px;
 }

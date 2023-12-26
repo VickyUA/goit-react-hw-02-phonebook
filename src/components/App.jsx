@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import Form from './Form';
+import Filter from './Filter';
+import ContactList from './ContactList';
 import { nanoid } from 'nanoid';
 
 export default class App extends Component {
@@ -10,12 +12,27 @@ export default class App extends Component {
 
   formSubmitHandler = ({ name, number }) => {
     const newContact = { name, number, id: nanoid() };
-    this.setState(prev => ({ contacts: [...prev.contacts, newContact] }));
+
+    const nameExists = this.state.contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (nameExists) {
+      alert(`${name} is already in contacts.`);
+    } else {
+      this.setState(prev => ({ contacts: [...prev.contacts, newContact] }));
+    }
     console.log(this.state);
   };
 
   handleFilter = event => {
     this.setState({ filter: event.target.value });
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   render() {
@@ -31,23 +48,17 @@ export default class App extends Component {
           alignItems: 'center',
           flexDirection: 'column',
           width: '500px',
+          margin: '0 auto',
         }}
       >
         <Form getSubmitData={this.formSubmitHandler} />
         <div>
           <h2>Contacts</h2>
-          <h3>Find contacts by name</h3>
-          <input
-            type="text"
-            name="filter"
-            value={this.state.filter}
-            onChange={this.handleFilter}
+          <Filter value={this.state.filter} onChange={this.handleFilter} />
+          <ContactList
+            contacts={filteredContacts}
+            onClick={this.deleteContact}
           />
-          {filteredContacts.map(contact => (
-            <li key={contact.id}>
-              {contact.name}: {contact.number}
-            </li>
-          ))}
         </div>
       </div>
     );

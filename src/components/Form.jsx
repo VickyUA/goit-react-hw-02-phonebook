@@ -37,6 +37,7 @@ export class Form extends Component {
             value={this.state.name}
             onChange={this.handleChange}
             id={this.nameInputId}
+            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             required
           />
           <label htmlFor={this.numberInputId}>Number</label>
@@ -46,6 +47,7 @@ export class Form extends Component {
             value={this.state.number}
             onChange={this.handleChange}
             id={this.numberInputId}
+            pattern="/^\+?\d{1,4}[ .-]?\(?\d{1,3}?\)?[ .-]?\d{1,4}[ .-]?\d{1,4}[ .-]?\d{1,9}$/"
             required
           />
           <button type="submit">Add contact</button>
