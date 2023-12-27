@@ -1,8 +1,9 @@
-import css from './app.module.css';
+import ContactItem from '../ContactItem/ContactItem';
+import css from 'components/ContactList/contactList.module.css';
 
-const ContactItem = ({ contacts, onClick }) => {
+const ContactList = ({ contacts, onClick }) => {
   return (
-    <>
+    <ul>
       {contacts.map(contact => (
         <li key={contact.id}>
           {contact.name}: {contact.number}
@@ -15,8 +16,8 @@ const ContactItem = ({ contacts, onClick }) => {
           </button>
         </li>
       ))}
-    </>
+    </ul>
   );
 };
 
-export default ContactItem;
+export default ContactList;
