@@ -1,5 +1,5 @@
 import ContactItem from '../ContactItem/ContactItem';
-import css from 'components/ContactList/contactList.module.css';
+// import css from 'components/ContactList/contactList.module.css';
 
 const ContactList = ({ contacts, onClick }) => {
   return (
