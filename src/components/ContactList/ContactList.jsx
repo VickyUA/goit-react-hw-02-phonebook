@@ -6,14 +6,7 @@ const ContactList = ({ contacts, onClick }) => {
     <ul>
       {contacts.map(contact => (
         <li key={contact.id}>
-          {contact.name}: {contact.number}
-          <button
-            className={css.deleteBtn}
-            type="button"
-            onClick={() => onClick(contact.id)}
-          >
-            Delete
-          </button>
+          <ContactItem contact={contact} onClick={() => onClick(contact.id)} />
         </li>
       ))}
     </ul>

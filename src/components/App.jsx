@@ -22,7 +22,6 @@ export default class App extends Component {
     } else {
       this.setState(prev => ({ contacts: [...prev.contacts, newContact] }));
     }
-    console.log(this.state);
   };
 
   handleFilter = event => {

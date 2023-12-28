@@ -1,9 +1,13 @@
+import css from 'components/ContactItem/contactItem.module.css';
+
 const ContactItem = ({ contact, onClick }) => {
   return (
-    <li>
+    <>
       {contact.name}: {contact.number}
-      <button onClick={onClick}>Delete</button>
-    </li>
+      <button className={css.deleteBtn} onClick={onClick}>
+        Delete
+      </button>
+    </>
   );
 };
 
